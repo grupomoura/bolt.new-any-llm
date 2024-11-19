@@ -18,11 +18,19 @@ import styles from './BaseChat.module.scss';
 import type { ProviderInfo } from '~/utils/types';
 
 const EXAMPLE_PROMPTS = [
-  { text: 'Build a todo app in React using Tailwind' },
-  { text: 'Build a simple blog using Astro' },
-  { text: 'Create a cookie consent form using Material UI' },
-  { text: 'Make a space invaders game' },
-  { text: 'How do I center a div?' },
+  {
+    text: 'Crie uma TodoList com funcionalidades para adicionar marcar como concluída e remover tarefas em React usando Tailwind',
+  },
+  { text: 'Crie um blog simples usando Astro' },
+  {
+    text: 'Desenvolva uma calculadora em React com interface minimalista que realiza operações básicas como adição, subtração, multiplicação e divisão.',
+  },
+  {
+    text: 'Construa um cronômetro em React que permita iniciar, pausar e reiniciar, além de um temporizador para contagem regressiva.',
+  },
+  {
+    text: 'Crie uma galeria de imagens em React que mostre imagens de uma API ou de uma lista local, com funcionalidade de zoom ou exibição em tela cheia.',
+  },
 ];
 
 const providerList = PROVIDER_LIST;
