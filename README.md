@@ -225,6 +225,55 @@ By default, Anthropic, OpenAI, Groq, and Ollama are implemented as providers, bu
 
 When you add a new model to the MODEL_LIST array, it will immediately be available to use when you run the app locally or reload it. For Ollama models, make sure you have the model installed already before trying to use it here!
 
+## SaaS Features
+
+This version of Any-LLM includes multi-user support with the following features:
+
+- User authentication (registration and login)
+- Individual user projects
+- Project management dashboard
+- Secure data isolation between users
+
+### Setup Instructions
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Set up the database:
+- Create a PostgreSQL database
+- Copy `.env.example` to `.env` and update the database connection URL
+- Run database migrations:
+```bash
+npx prisma migrate dev
+```
+
+3. Set environment variables:
+- Set `SESSION_SECRET` in your `.env` file
+- Update other existing environment variables as needed
+
+4. Run the development server:
+```bash
+npm run dev
+```
+
+The application will be available at http://localhost:3000
+
+### Database Schema
+
+The application uses Prisma with PostgreSQL and includes the following models:
+
+- User: Stores user information and authentication details
+- Project: Manages user projects with relationships to users
+
+### Authentication
+
+The authentication system uses:
+- Secure password hashing with bcrypt
+- Session-based authentication
+- Protected routes with user verification
+
 ## Available Scripts
 
 - `pnpm run dev`: Starts the development server.

@@ -1,27 +1,31 @@
 import { useStore } from '@nanostores/react';
-import type { LinksFunction } from '@remix-run/cloudflare';
+import type { LinksFunction } from '@remix-run/node';
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import tailwindReset from '@unocss/reset/tailwind-compat.css?url';
+import { cssBundleHref } from "@remix-run/css-bundle";
 import { themeStore } from './lib/stores/theme';
 import { stripIndents } from './utils/stripIndent';
 import { createHead } from 'remix-island';
 import { useEffect } from 'react';
 
-import reactToastifyStyles from 'react-toastify/dist/ReactToastify.css?url';
-import globalStyles from './styles/index.scss?url';
-import xtermStyles from '@xterm/xterm/css/xterm.css?url';
-
-import 'virtual:uno.css';
+// @ts-ignore
+import reactToastifyStyles from 'react-toastify/dist/ReactToastify.css';
+// @ts-ignore
+import globalStyles from './styles/index.scss';
+// @ts-ignore
+import tailwindStyles from './styles/tailwind.css';
+// @ts-ignore
+import xtermStyles from '@xterm/xterm/css/xterm.css';
 
 export const links: LinksFunction = () => [
+  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   {
     rel: 'icon',
     href: '/favicon.svg',
     type: 'image/svg+xml',
   },
   { rel: 'stylesheet', href: reactToastifyStyles },
-  { rel: 'stylesheet', href: tailwindReset },
   { rel: 'stylesheet', href: globalStyles },
+  { rel: 'stylesheet', href: tailwindStyles },
   { rel: 'stylesheet', href: xtermStyles },
   {
     rel: 'preconnect',
@@ -34,7 +38,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+    href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap',
   },
 ];
 
